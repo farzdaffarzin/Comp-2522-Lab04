@@ -1,4 +1,4 @@
-package code.ca.bcit.comp2522.lab4;
+package ca.bcit.comp2522.lab4;
 
 /**
  * Class with Date object validating and containing Year, month and day
