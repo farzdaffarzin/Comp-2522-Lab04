@@ -1,46 +1,62 @@
 package ca.bcit.comp2522.lab4;
 
-public class Author extends Person implements Printable{
+/**
+ * Author class represents an author, which extends the Person class and
+ * adds additional functionality for handling an author's genre.
+ * This class is able to display the author's name, genre, reverse the name,
+ * and compare authors based on their date of birth and genre.
+ *
+ * Implements the Printable interface for displaying information and
+ * the Comparable interface for sorting authors.
+ *
+ * @author Farzad Farzin
+ * @author Anil Bronson
+ * @author Dalraj Bains
+ *
+ * @version 1.0
+ */
+public class Author extends Person implements Printable {
 
     private final String genre;
 
     /**
-     * constructions of this class, validating and initiating the values to the person.
+     * Constructs an Author instance, initializing the date of birth, date of death, name, and genre.
+     * Validates the genre, ensuring it is not null and has a length of 30 characters or fewer.
      *
-     * @param dateOfBirth the birthdate.
-     * @param dateOfDeath the death date.
-     * @param name        the name
+     * @param dateOfBirth the birthdate of the author.
+     * @param dateOfDeath the death date of the author (nullable).
+     * @param name        the name of the author.
+     * @param genre       the genre associated with the author's work.
+     * @throws NullPointerException if the genre is null.
+     * @throws IllegalArgumentException if the genre exceeds 30 characters.
      */
-    public Author(final Date dateOfBirth,
-                  final Date dateOfDeath,
-                  final Name name,
-                  final String genre) {
-
+    public Author(final Date dateOfBirth, final Date dateOfDeath, final Name name, final String genre) {
         super(dateOfBirth, dateOfDeath, name);
-
         validate(genre);
-
         this.genre = genre;
     }
 
     /**
-     * Validates if the genre is null or greater than 30 characters
-     * @param genre of author
+     * Validates if the genre is null or exceeds 30 characters.
+     *
+     * @param genre the genre of the author.
+     * @throws NullPointerException if the genre is null.
+     * @throws IllegalArgumentException if the genre exceeds 30 characters.
      */
     private void validate(final String genre) {
-
-        if(genre == null){
-            throw new NullPointerException("genre is null");
+        if (genre == null) {
+            throw new NullPointerException("Genre is null");
         }
-        if(genre.length() > 30){
-            throw new IllegalArgumentException("genre must be less than 30 characters");
+        if (genre.length() > 30) {
+            throw new IllegalArgumentException("Genre must be less than 30 characters");
         }
     }
 
     /**
-     * Prints all attributes
+     * Displays the full details of the author, including name, birth date, death date (if applicable),
+     * and genre. Calls the display method from the Person class and appends the genre.
      *
-     * @return full information about the author
+     * @return a string representation of the author's details.
      */
     @Override
     public String display() {
@@ -49,72 +65,61 @@ public class Author extends Person implements Printable{
     }
 
     /**
-     * Reverse the full name
+     * Displays the reversed version of the author's full name and genre.
+     * Calls the displayReversed method from the Person class and appends the genre.
      *
-     * @return reversed version of the author
+     * @return a string representation of the reversed name and genre.
      */
     @Override
-    public String displayReversed(){
+    public String displayReversed() {
         String details = super.displayReversed();
         return details + "Genre: " + genre + "\n";
     }
 
-
     /**
-     * Compares the authors based first on the superclass Person, which
-     * compares DOB. After compares them based on genre.
+     * Compares this author to another person based on their date of birth.
+     * If the birth years are the same, compares by genre.
      *
-     * @param other the object to be compared.
-     * @return comparison
+     * @param other the other person to compare.
+     * @return a negative integer, zero, or a positive integer as this object is less than, equal to,
+     *         or greater than the specified object.
      */
     @Override
     public int compareTo(Person other) {
-        // First compare by date of birth (age)
-        int dateComparison = super.compareTo(other); // Use the Person's compareTo method
-
-        // If the authors have the same birth year, compare by genre
+        int dateComparison = super.compareTo(other); // Compare based on date of birth first
         if (dateComparison == 0 && other instanceof Author otherAuthor) {
-            return this.genre.compareTo(otherAuthor.genre);
+            return this.genre.compareTo(otherAuthor.genre); // Compare by genre if birth dates are equal
         }
-
         return dateComparison;
     }
 
     /**
-     * getter for the date of birth to access it using superclass
+     * Gets the author's date of birth using the Person class.
      *
-     * @return DOB of author
+     * @return the date of birth of the author.
      */
     @Override
     public Date getDateOfBirth() {
         return super.getDateOfBirth();
     }
 
-
     /**
-     * getter for the date of death to access it using superclass
+     * Gets the author's date of death using the Person class.
      *
-     * @return DOD of author
+     * @return the date of death of the author, or null if the author is still alive.
      */
     @Override
     public Date getDateOfDeath() {
         return super.getDateOfDeath();
     }
 
-
     /**
-     * getter for the name to access it using superclass
+     * Gets the author's name using the Person class.
      *
-     * @return name of author
+     * @return the name of the author.
      */
     @Override
     public Name getName() {
         return super.getName();
     }
-
-
-
-
 }
-
-
