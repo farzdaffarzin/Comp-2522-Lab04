@@ -5,5 +5,5 @@ public interface Printable {
     /**
      * prints every instance variable (including those in parent classes) in a sentence.
      */
-    public String display();
+    String display();
 }

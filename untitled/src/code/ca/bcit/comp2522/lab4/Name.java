@@ -37,4 +37,12 @@ public class Name implements Printable {
     public String display(){
         return firstName + " " + lastName;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 }
