@@ -27,6 +27,7 @@ public class Person implements Printable, Comparable<Person>, Reversible {
                 final Name name) {
 
     validator(dateOfBirth, name);
+
     this.dateOfBirth = dateOfBirth;
     this.dateOfDeath = dateOfDeath;
     this.name = name;
