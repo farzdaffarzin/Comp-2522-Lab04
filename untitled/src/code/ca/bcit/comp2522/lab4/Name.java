@@ -40,7 +40,7 @@ public class Name implements Printable {
                            final String lastName) {
 
         if (firstName == null || lastName == null) {
-            throw new IllegalArgumentException("first name or last name cannot be null");
+            throw new NullPointerException("first name or last name cannot be null");
         }
         if(firstName.isBlank() || lastName.isBlank()){
             throw new IllegalArgumentException("first name or last name cannot be blank");

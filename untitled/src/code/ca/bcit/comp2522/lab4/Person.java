@@ -42,7 +42,7 @@ public class Person implements Printable, Comparable<Person>, Reversible {
                          final Name name) {
 
     if (dateOfBirth == null || name == null) {
-      throw new IllegalArgumentException("dateOfBirth and name cannot be null");
+      throw new NullPointerException("dateOfBirth and name cannot be null");
     }
   }
 
@@ -82,7 +82,7 @@ public class Person implements Printable, Comparable<Person>, Reversible {
    * @return the larger the number the older the people.
    */
   @Override
-  public int compareTo(Person other) {
+  public int compareTo(final Person other) {
     return this.dateOfBirth.getYear() - other.dateOfBirth.getYear();
   }
 
