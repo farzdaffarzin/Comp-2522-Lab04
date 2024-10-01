@@ -5,11 +5,11 @@ package ca.bcit.comp2522.lab4;
  * It implements Comparable to compare books by their publication year,
  * Printable to display details, and Reversible to display the title in reverse.
  *
- *@author Farzad Farzin
- *@author Anil Bronson
- *@author Dalraj Bains
+ * @author Farzad Farzin
+ * @author Anil Bronson
+ * @author Dalraj Bains
  *
- *@version 1.0
+ * @version 1.0
  */
 public class Book implements Comparable<Book>, Printable, Reversible{
   private final String title;
@@ -44,7 +44,7 @@ public class Book implements Comparable<Book>, Printable, Reversible{
    * @param title The title of the book.
    * @throws IllegalArgumentException if the title is null, blank, or more than 100 characters.
    */
-  private void validateTitle(String title) {
+  private void validateTitle(final String title) {
     if (title == null || title.isBlank() || title.length() > 100) {
       throw new IllegalArgumentException("Title must be non-null, non-blank, and less than 100 characters");
     }
@@ -56,7 +56,7 @@ public class Book implements Comparable<Book>, Printable, Reversible{
    * @param yearPublished The year the book was published, represented as a Date object.
    * @throws IllegalArgumentException if yearPublished is null.
    */
-  private void validateYearPublished(Date yearPublished) {
+  private void validateYearPublished(final Date yearPublished) {
     if (yearPublished == null) {
       throw new IllegalArgumentException("Year published cannot be null");
     }
