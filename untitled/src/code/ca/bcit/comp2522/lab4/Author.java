@@ -1,7 +1,7 @@
 package ca.bcit.comp2522.lab4;
 
 /**
- * Author class represents an author, which extends the Person class and
+ * <p<></p>Author class represents an author, which extends the Person class and
  * adds additional functionality for handling an author's genre.
  * This class is able to display the author's name, genre, reverse the name,
  * and compare authors based on their date of birth and genre.
@@ -86,6 +86,9 @@ public class Author extends Person implements Printable {
      */
     @Override
     public int compareTo(Person other) {
+        if (other == null) {
+            throw new NullPointerException("Cannot compare to a null Person");
+        }
         int dateComparison = super.compareTo(other); // Compare based on date of birth first
         if (dateComparison == 0 && other instanceof Author otherAuthor) {
             return this.genre.compareTo(otherAuthor.genre); // Compare by genre if birth dates are equal
