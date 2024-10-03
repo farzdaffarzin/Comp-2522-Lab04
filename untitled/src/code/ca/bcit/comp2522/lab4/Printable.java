@@ -8,7 +8,6 @@ package ca.bcit.comp2522.lab4;
  * @author Farzad Farzin
  * @author Anil Bronson
  * @author Arsh Mann
- *
  * @version 1.0
  */
 public interface Printable {

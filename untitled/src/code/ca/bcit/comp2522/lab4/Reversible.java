@@ -8,15 +8,14 @@ package ca.bcit.comp2522.lab4;
  * @author Farzad Farzin
  * @author Anil Bronson
  * @author Arsh Mann
- *
  * @version 1.0
  */
 public interface Reversible {
 
-  /**
-   * Displays the reversed version of the object.
-   *
-   * @return a String representing the reversed object.
-   */
-  String displayReversed();
+    /**
+     * Displays the reversed version of the object.
+     *
+     * @return a String representing the reversed object.
+     */
+    String displayReversed();
 }

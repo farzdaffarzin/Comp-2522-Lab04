@@ -9,129 +9,130 @@ package ca.bcit.comp2522.lab4;
  * @author Anil Bronson
  * @author Dalraj Bains
  * @author Arsh Mann
- *
  * @version 1.0
  */
-public class Book implements Comparable<Book>, Printable, Reversible{
+public class Book implements Comparable<Book>, Printable, Reversible {
 
-  private final String title;
-  private final Date yearPublished;
-  private final Author  author;
+    private final String title;
+    private final Date yearPublished;
+    private final Author author;
 
-  private final int MAX_TITLE_LENGTH = 100;
+    private final int MAX_TITLE_LENGTH = 100;
 
-  /**
-   * Constructs a new Book instance with the specified title, year of publication, and author.
-   *
-   * @param title The title of the book. Must not be null, blank, or more than 100 characters.
-   * @param yearPublished The year the book was published, represented as a Date object. Must not be null.
-   * @param author The author of the book. Must not be null.
-   * @throws IllegalArgumentException if the title is null, blank, or more than 100 characters, or if the yearPublished or author is null.
-   */
-  public Book(final String title,
-              final Date yearPublished,
-              final Author author) {
+    /**
+     * Constructs a new Book instance with the specified title, year of publication, and author.
+     *
+     * @param title         The title of the book. Must not be null, blank, or more than 100 characters.
+     * @param yearPublished The year the book was published, represented as a Date object. Must not be null.
+     * @param author        The author of the book. Must not be null.
+     * @throws IllegalArgumentException if the title is null, blank, or more than 100 characters, or if the yearPublished or author is null.
+     */
+    public Book(final String title,
+                final Date yearPublished,
+                final Author author) {
 
-    //validators for the values
-    validateTitle(title);
-    validateYearPublished(yearPublished);
+        //validators for the values
+        validateTitle(title);
+        validateYearPublished(yearPublished);
 
-    if (author == null) {
-      throw new IllegalArgumentException("Author cannot be null");
+        if(author == null) {
+            throw new IllegalArgumentException("Author cannot be null");
+        }
+
+        this.title = title;
+        this.yearPublished = yearPublished;
+        this.author = author;
     }
 
-    this.title = title;
-    this.yearPublished = yearPublished;
-    this.author = author;
-  }
+    /**
+     * Validates the title of the book.
+     *
+     * @param title The title of the book.
+     * @throws IllegalArgumentException if the title is null, blank, or more than 100 characters.
+     */
+    private void validateTitle(final String title) {
 
-  /**
-   * Validates the title of the book.
-   *
-   * @param title The title of the book.
-   * @throws IllegalArgumentException if the title is null, blank, or more than 100 characters.
-   */
-  private void validateTitle(final String title) {
-
-    if (title == null || title.isBlank() || title.length() > MAX_TITLE_LENGTH) {
-      throw new IllegalArgumentException("Title must be non-null, non-blank, and less than 100 characters");
-    }
-  }
-
-  /**
-   * Validates the year of publication.
-   *
-   * @param yearPublished The year the book was published, represented as a Date object.
-   * @throws IllegalArgumentException if yearPublished is null.
-   */
-  private void validateYearPublished(final Date yearPublished) {
-
-    if (yearPublished == null) {
-      throw new IllegalArgumentException("Year published cannot be null");
-    }
-  }
-
-  /**
-   * Displays the details of the book, including the title, year published, and author.
-   *
-   * @return A string containing the book's title, year of publication, and author details.
-   */
-  @Override
-  public String display() {
-
-    final String display;
-
-    display = "Title: " +
-            title +
-            "\nYear Published: " +
-            yearPublished.getYear() +
-            "-" +
-            yearPublished.getMonth() +
-            "-" +
-            yearPublished.getDay() +
-            "\nAuthor: " +
-            author.display();
-
-    return display;
-  }
-
-  /**
-   * Displays the book's title in reverse.
-   *
-   * @return A string containing the reversed book title.
-   */
-  @Override
-  public String displayReversed() {
-
-    StringBuilder reversedTitle = new StringBuilder(title);
-
-    return "Reversed Title: " + reversedTitle.reverse();
-  }
-
-  /**
-   * Compares this book with another book based on the year of publication.
-   * Older books are considered "larger."
-   *
-   * @param other The other book to compare.
-   * @return A negative integer, zero, or a positive integer as this book is older than, the same age as,
-   *         or younger than the specified book.
-   */
-  @Override
-  public int compareTo(Book other) {
-
-    // First, compare by year
-    if (this.yearPublished.getYear() != other.yearPublished.getYear()) {
-
-      return Integer.compare(this.yearPublished.getYear(), other.yearPublished.getYear());
+        if(title == null || title.isBlank() || title.length() > MAX_TITLE_LENGTH) {
+            throw new IllegalArgumentException("Title must be non-null, non-blank, and less than 100 characters");
+        }
     }
 
-    // If years are the same, compare by month
-    if (this.yearPublished.getMonth() != other.yearPublished.getMonth()) {
+    /**
+     * Validates the year of publication.
+     *
+     * @param yearPublished The year the book was published, represented as a Date object.
+     * @throws IllegalArgumentException if yearPublished is null.
+     */
+    private void validateYearPublished(final Date yearPublished) {
 
-      return Integer.compare(this.yearPublished.getMonth(), other.yearPublished.getMonth());
+        if(yearPublished == null) {
+            throw new IllegalArgumentException("Year published cannot be null");
+        }
     }
 
-    // If months are the same, compare by day
-    return Integer.compare(this.yearPublished.getDay(), other.yearPublished.getDay());
-  }
+    /**
+     * Displays the details of the book, including the title, year published, and author.
+     *
+     * @return A string containing the book's title, year of publication, and author details.
+     */
+    @Override
+    public String display() {
+
+        final String display;
+
+        display = "Title: " +
+                title +
+                "\nYear Published: " +
+                yearPublished.getYear() +
+                "-" +
+                yearPublished.getMonth() +
+                "-" +
+                yearPublished.getDay() +
+                "\nAuthor: " +
+                author.display();
+
+        return display;
+    }
+
+    /**
+     * Displays the book's title in reverse.
+     *
+     * @return A string containing the reversed book title.
+     */
+    @Override
+    public String displayReversed() {
+
+        StringBuilder reversedTitle;
+
+        reversedTitle = new StringBuilder(title);
+
+        return "Reversed Title: " + reversedTitle.reverse();
+    }
+
+    /**
+     * Compares this book with another book based on the year of publication.
+     * Older books are considered "larger."
+     *
+     * @param other The other book to compare.
+     * @return A negative integer, zero, or a positive integer as this book is older than, the same age as,
+     * or younger than the specified book.
+     */
+    @Override
+    public int compareTo(Book other) {
+
+        // First, compare by year
+        if(this.yearPublished.getYear() != other.yearPublished.getYear()) {
+
+            return Integer.compare(this.yearPublished.getYear(), other.yearPublished.getYear());
+        }
+
+        // If years are the same, compare by month
+        if(this.yearPublished.getMonth() != other.yearPublished.getMonth()) {
+
+            return Integer.compare(this.yearPublished.getMonth(), other.yearPublished.getMonth());
+        }
+
+        // If months are the same, compare by day
+        return Integer.compare(this.yearPublished.getDay(), other.yearPublished.getDay());
+    }
 }

@@ -13,7 +13,6 @@ package ca.bcit.comp2522.lab4;
  * @author Anil Bronson
  * @author Dalraj Bains
  * @author Arsh Mann
- *
  * @version 1.0
  */
 public class Author extends Person implements Printable {
@@ -29,7 +28,7 @@ public class Author extends Person implements Printable {
      * @param dateOfDeath the death date of the author (nullable).
      * @param name        the name of the author.
      * @param genre       the genre associated with the author's work.
-     * @throws NullPointerException if the genre is null.
+     * @throws NullPointerException     if the genre is null.
      * @throws IllegalArgumentException if the genre exceeds 30 characters.
      */
     public Author(final Date dateOfBirth,
@@ -46,16 +45,16 @@ public class Author extends Person implements Printable {
      * Validates if the genre is null or exceeds 30 characters.
      *
      * @param genre the genre of the author.
-     * @throws NullPointerException if the genre is null.
+     * @throws NullPointerException     if the genre is null.
      * @throws IllegalArgumentException if the genre exceeds 30 characters.
      */
     private void validate(final String genre) {
 
-        if (genre == null) {
+        if(genre == null) {
             throw new NullPointerException("Genre is null");
         }
 
-        if (genre.length() > MAX_GENRE_LENGTH) {
+        if(genre.length() > MAX_GENRE_LENGTH) {
             throw new IllegalArgumentException("Genre must be less than 30 characters");
         }
     }
@@ -99,18 +98,18 @@ public class Author extends Person implements Printable {
      *
      * @param other the other person to compare.
      * @return a negative integer, zero, or a positive integer as this object is less than, equal to,
-     *         or greater than the specified object.
+     * or greater than the specified object.
      */
     @Override
     public int compareTo(Person other) {
 
-        if (other == null) {
+        if(other == null) {
             throw new NullPointerException("Cannot compare to a null Person");
         }
 
         int dateComparison = super.compareTo(other); // Compare based on date of birth first
 
-        if (dateComparison == 0 && other instanceof Author otherAuthor) {
+        if(dateComparison == 0 && other instanceof Author otherAuthor) {
             return this.genre.compareTo(otherAuthor.genre); // Compare by genre if birth dates are equal
         }
 
