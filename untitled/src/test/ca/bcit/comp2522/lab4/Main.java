@@ -1,8 +1,22 @@
 package ca.bcit.comp2522.lab4;
 
+/**
+ * Main class to test all the functionalities .
+ *
+ * @author Farzad Farzin
+ * @author Anil Bronson
+ * @author Dalraj Bains
+ *
+ * @version 1.0
+ */
 public class Main {
 
-  public static void main(String[] args) {
+  /**
+   *  main method to test the classes and implemented interfaces.
+   *
+   * @param args not used.
+   */
+  public static void main(final String[] args) {
     //initializing authors
     Author author1;
     Author author2;
