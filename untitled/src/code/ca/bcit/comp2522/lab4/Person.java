@@ -35,10 +35,10 @@ public class Person implements Printable, Comparable<Person>, Reversible {
 
   /**
    * validating all the inputs are not null
-   * @param date the birthdate
+   * @param dateOfBirth the birthdate
    * @param name the name
    */
-  private void validator(final Date date,
+  private void validator(final Date dateOfBirth,
                          final Name name) {
 
     if (dateOfBirth == null || name == null) {

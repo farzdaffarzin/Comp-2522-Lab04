@@ -85,7 +85,7 @@ public class Book implements Comparable<Book>, Printable, Reversible{
   @Override
   public String displayReversed() {
     StringBuilder reversedTitle = new StringBuilder(title);
-    return "Reversed Title: " + reversedTitle.reverse().toString();
+    return "Reversed Title: " + reversedTitle.reverse();
   }
 
   /**
@@ -111,32 +111,4 @@ public class Book implements Comparable<Book>, Printable, Reversible{
     // If months are the same, compare by day
     return Integer.compare(this.yearPublished.getDay(), other.yearPublished.getDay());
   }
-
-  /**
-   * Gets the title of the book.
-   *
-   * @return The title of the book.
-   */
-  public String getTitle() {
-    return title;
-  }
-
-  /**
-   * Gets the year the book was published.
-   *
-   * @return The year the book was published, represented as a Date object.
-   */
-  public Date getYearPublished() {
-    return yearPublished;
-  }
-
-  /**
-   * Gets the author of the book.
-   *
-   * @return The author of the book.
-   */
-  public Author getAuthor() {
-    return author;
-  }
-
 }

@@ -61,13 +61,4 @@ public class Biography extends Book implements Printable {
   public String display() {
     return super.display() + "Subject: " + subject.display();
   }
-
-  /**
-   * Gets the subject of the biography.
-   *
-   * @return The subject of the biography.
-   */
-  public Person getSubject() {
-    return subject;
-    }
 }
