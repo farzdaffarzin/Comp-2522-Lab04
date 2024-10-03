@@ -42,14 +42,20 @@ public class Biography extends Book implements Printable {
    */
   @Override
   public boolean equals(Object obj) {
+
+    // Same object
     if (this == obj) {
-      return true;  // Same object
+      return true;
     }
+
+    // Different class
     if (obj == null || getClass() != obj.getClass()) {
-      return false;  // Different class
+      return false;
     }
+
+    // Compare subjects
     Biography otherBiography = (Biography) obj;
-    return this.subject.equals(otherBiography.subject);  // Compare subjects
+    return this.subject.equals(otherBiography.subject);
   }
 
   /**
@@ -59,6 +65,8 @@ public class Biography extends Book implements Printable {
    */
   @Override
   public String display() {
-    return super.display() + "Subject: " + subject.display();
+    return super.display() +
+            "Subject: " +
+            subject.display();
   }
 }

@@ -1,13 +1,13 @@
 package ca.bcit.comp2522.lab4;
 
 /**
- * <p<></p>Author class represents an author, which extends the Person class and
+ * <p>Author class represents an author, which extends the Person class and
  * adds additional functionality for handling an author's genre.
  * This class is able to display the author's name, genre, reverse the name,
  * and compare authors based on their date of birth and genre.
- *
  * Implements the Printable interface for displaying information and
  * the Comparable interface for sorting authors.
+ * </p>
  *
  * @author Farzad Farzin
  * @author Anil Bronson
@@ -30,7 +30,11 @@ public class Author extends Person implements Printable {
      * @throws NullPointerException if the genre is null.
      * @throws IllegalArgumentException if the genre exceeds 30 characters.
      */
-    public Author(final Date dateOfBirth, final Date dateOfDeath, final Name name, final String genre) {
+    public Author(final Date dateOfBirth,
+                  final Date dateOfDeath,
+                  final Name name,
+                  final String genre) {
+
         super(dateOfBirth, dateOfDeath, name);
         validate(genre);
         this.genre = genre;
@@ -44,9 +48,11 @@ public class Author extends Person implements Printable {
      * @throws IllegalArgumentException if the genre exceeds 30 characters.
      */
     private void validate(final String genre) {
+
         if (genre == null) {
             throw new NullPointerException("Genre is null");
         }
+
         if (genre.length() > 30) {
             throw new IllegalArgumentException("Genre must be less than 30 characters");
         }

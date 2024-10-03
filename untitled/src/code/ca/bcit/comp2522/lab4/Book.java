@@ -12,6 +12,7 @@ package ca.bcit.comp2522.lab4;
  * @version 1.0
  */
 public class Book implements Comparable<Book>, Printable, Reversible{
+
   private final String title;
   private final Date yearPublished;
   private final Author  author;
@@ -27,12 +28,15 @@ public class Book implements Comparable<Book>, Printable, Reversible{
   public Book(final String title,
               final Date yearPublished,
               final Author author) {
+
     //validators for the values
     validateTitle(title);
     validateYearPublished(yearPublished);
+
     if (author == null) {
       throw new IllegalArgumentException("Author cannot be null");
     }
+
     this.title = title;
     this.yearPublished = yearPublished;
     this.author = author;
@@ -45,6 +49,7 @@ public class Book implements Comparable<Book>, Printable, Reversible{
    * @throws IllegalArgumentException if the title is null, blank, or more than 100 characters.
    */
   private void validateTitle(final String title) {
+
     if (title == null || title.isBlank() || title.length() > 100) {
       throw new IllegalArgumentException("Title must be non-null, non-blank, and less than 100 characters");
     }
@@ -57,6 +62,7 @@ public class Book implements Comparable<Book>, Printable, Reversible{
    * @throws IllegalArgumentException if yearPublished is null.
    */
   private void validateYearPublished(final Date yearPublished) {
+
     if (yearPublished == null) {
       throw new IllegalArgumentException("Year published cannot be null");
     }
@@ -70,10 +76,17 @@ public class Book implements Comparable<Book>, Printable, Reversible{
   @Override
   public String display() {
 
-    String display = "Title: " + title +
-            "\nYear Published: " + yearPublished.getYear() + "-" +
-            yearPublished.getMonth() + "-" + yearPublished.getDay() +
-            "\nAuthor: " + author.display();
+    String display = "Title: " +
+            title +
+            "\nYear Published: " +
+            yearPublished.getYear() +
+            "-" +
+            yearPublished.getMonth() +
+            "-" +
+            yearPublished.getDay() +
+            "\nAuthor: " +
+            author.display();
+
     return display;
   }
 
@@ -84,6 +97,7 @@ public class Book implements Comparable<Book>, Printable, Reversible{
    */
   @Override
   public String displayReversed() {
+
     StringBuilder reversedTitle = new StringBuilder(title);
     return "Reversed Title: " + reversedTitle.reverse();
   }
@@ -98,6 +112,7 @@ public class Book implements Comparable<Book>, Printable, Reversible{
    */
   @Override
   public int compareTo(Book other) {
+
     // First, compare by year
     if (this.yearPublished.getYear() != other.yearPublished.getYear()) {
       return Integer.compare(this.yearPublished.getYear(), other.yearPublished.getYear());

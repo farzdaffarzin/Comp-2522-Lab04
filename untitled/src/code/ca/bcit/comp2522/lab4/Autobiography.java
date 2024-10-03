@@ -21,7 +21,10 @@ public class Autobiography  extends Biography implements Printable {
    * @param author The author of the autobiography, who is also the subject. Must not be null.
    * @throws IllegalArgumentException if any of the parameters are invalid or null.
    */
-  public Autobiography(String title, Date yearPublished, Author author) {
+  public Autobiography(final String title,
+                       final Date yearPublished,
+                       final Author author) {
+
     super(title, yearPublished, author, author);
   }
 
@@ -32,6 +35,7 @@ public class Autobiography  extends Biography implements Printable {
    */
   @Override
   public String display() {
+
     return super.display();
   }
 }
