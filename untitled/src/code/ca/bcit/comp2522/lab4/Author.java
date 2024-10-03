@@ -12,12 +12,14 @@ package ca.bcit.comp2522.lab4;
  * @author Farzad Farzin
  * @author Anil Bronson
  * @author Dalraj Bains
+ * @author Arsh Mann
  *
  * @version 1.0
  */
 public class Author extends Person implements Printable {
 
     private final String genre;
+    private final int MAX_GENRE_LENGTH = 30;
 
     /**
      * Constructs an Author instance, initializing the date of birth, date of death, name, and genre.
@@ -53,7 +55,7 @@ public class Author extends Person implements Printable {
             throw new NullPointerException("Genre is null");
         }
 
-        if (genre.length() > 30) {
+        if (genre.length() > MAX_GENRE_LENGTH) {
             throw new IllegalArgumentException("Genre must be less than 30 characters");
         }
     }
@@ -68,7 +70,11 @@ public class Author extends Person implements Printable {
     public String display() {
 
         String details = super.display();
-        return details + "Genre: " + genre + "\n";
+
+        return details +
+                "Genre: " +
+                genre +
+                "\n";
     }
 
     /**
@@ -81,7 +87,10 @@ public class Author extends Person implements Printable {
     public String displayReversed() {
 
         String details = super.displayReversed();
-        return details + "Genre: " + genre + "\n";
+
+        return details + "Genre: " +
+                genre +
+                "\n";
     }
 
     /**

@@ -8,6 +8,7 @@ package ca.bcit.comp2522.lab4;
  * @author Farzad Farzin
  * @author Anil Bronson
  * @author Dalraj Bains
+ * @author Arsh Mann
  *
  * @version 1.0
  */
@@ -16,6 +17,8 @@ public class Book implements Comparable<Book>, Printable, Reversible{
   private final String title;
   private final Date yearPublished;
   private final Author  author;
+
+  private final int MAX_TITLE_LENGTH = 100;
 
   /**
    * Constructs a new Book instance with the specified title, year of publication, and author.
@@ -50,7 +53,7 @@ public class Book implements Comparable<Book>, Printable, Reversible{
    */
   private void validateTitle(final String title) {
 
-    if (title == null || title.isBlank() || title.length() > 100) {
+    if (title == null || title.isBlank() || title.length() > MAX_TITLE_LENGTH) {
       throw new IllegalArgumentException("Title must be non-null, non-blank, and less than 100 characters");
     }
   }
@@ -76,7 +79,9 @@ public class Book implements Comparable<Book>, Printable, Reversible{
   @Override
   public String display() {
 
-    String display = "Title: " +
+    final String display;
+
+    display = "Title: " +
             title +
             "\nYear Published: " +
             yearPublished.getYear() +
@@ -99,6 +104,7 @@ public class Book implements Comparable<Book>, Printable, Reversible{
   public String displayReversed() {
 
     StringBuilder reversedTitle = new StringBuilder(title);
+
     return "Reversed Title: " + reversedTitle.reverse();
   }
 
@@ -115,11 +121,13 @@ public class Book implements Comparable<Book>, Printable, Reversible{
 
     // First, compare by year
     if (this.yearPublished.getYear() != other.yearPublished.getYear()) {
+
       return Integer.compare(this.yearPublished.getYear(), other.yearPublished.getYear());
     }
 
     // If years are the same, compare by month
     if (this.yearPublished.getMonth() != other.yearPublished.getMonth()) {
+
       return Integer.compare(this.yearPublished.getMonth(), other.yearPublished.getMonth());
     }
 

@@ -7,6 +7,7 @@ package ca.bcit.comp2522.lab4;
  * @author Farzad Farzin
  * @author Anil Bronson
  * @author Dalraj Bains
+ * @author Arsh Mann
  *
  * @version 1.0
  */
@@ -44,6 +45,7 @@ public class Person implements Printable, Comparable<Person>, Reversible {
     if (dateOfBirth == null || name == null) {
       throw new NullPointerException("dateOfBirth and name cannot be null");
     }
+
   }
 
   /**
@@ -53,7 +55,9 @@ public class Person implements Printable, Comparable<Person>, Reversible {
    */
   @Override
   public String display () {
-    StringBuilder displayName = new StringBuilder();
+    final StringBuilder displayName;
+
+    displayName = new StringBuilder();
 
     displayName.append("Name: ").append(name.display()).append("\n");
     displayName.append("Date of Birth: ").append(dateOfBirth.getYYYYMMDD()).append("\n");
@@ -76,7 +80,10 @@ public class Person implements Printable, Comparable<Person>, Reversible {
    */
   @Override
   public String displayReversed() {
-    String fullName = name.getFirstName() + " " + name.getLastName();
+
+    final String fullName = name.getFirstName() +
+            " " +
+            name.getLastName();
 
     return new StringBuilder(fullName).reverse().toString();
   }
@@ -89,6 +96,7 @@ public class Person implements Printable, Comparable<Person>, Reversible {
    */
   @Override
   public int compareTo(final Person other) {
+
     return this.dateOfBirth.getYear() - other.dateOfBirth.getYear();
   }
 
@@ -97,6 +105,7 @@ public class Person implements Printable, Comparable<Person>, Reversible {
    * @return date of birth
    */
   public Date getDateOfBirth() {
+
     return dateOfBirth;
   }
 
@@ -105,6 +114,7 @@ public class Person implements Printable, Comparable<Person>, Reversible {
    * @return date of death
    */
   public Date getDateOfDeath() {
+
     return dateOfDeath;
   }
 
@@ -113,6 +123,7 @@ public class Person implements Printable, Comparable<Person>, Reversible {
    * @return name
    */
   public Name getName() {
+
     return name;
   }
 }
