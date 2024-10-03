@@ -66,6 +66,7 @@ public class Author extends Person implements Printable {
      */
     @Override
     public String display() {
+
         String details = super.display();
         return details + "Genre: " + genre + "\n";
     }
@@ -78,6 +79,7 @@ public class Author extends Person implements Printable {
      */
     @Override
     public String displayReversed() {
+
         String details = super.displayReversed();
         return details + "Genre: " + genre + "\n";
     }
@@ -92,13 +94,17 @@ public class Author extends Person implements Printable {
      */
     @Override
     public int compareTo(Person other) {
+
         if (other == null) {
             throw new NullPointerException("Cannot compare to a null Person");
         }
+
         int dateComparison = super.compareTo(other); // Compare based on date of birth first
+
         if (dateComparison == 0 && other instanceof Author otherAuthor) {
             return this.genre.compareTo(otherAuthor.genre); // Compare by genre if birth dates are equal
         }
+
         return dateComparison;
     }
 

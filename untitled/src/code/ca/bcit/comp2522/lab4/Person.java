@@ -52,13 +52,18 @@ public class Person implements Printable, Comparable<Person>, Reversible {
    * @return full displayed information of the person
    */
   @Override
-  public String display() {
+  public String display () {
     StringBuilder displayName = new StringBuilder();
+
     displayName.append("Name: ").append(name.display()).append("\n");
     displayName.append("Date of Birth: ").append(dateOfBirth.getYYYYMMDD()).append("\n");
-    if (dateOfDeath != null) {
+
+    if(dateOfDeath != null)
+    {
       displayName.append("Date of Death: ").append(dateOfDeath.getYYYYMMDD()).append("\n");
-    } else {
+    }
+    else
+    {
       displayName.append("Date of Death: Still alive\n");
     }
     return displayName.toString();
@@ -72,6 +77,7 @@ public class Person implements Printable, Comparable<Person>, Reversible {
   @Override
   public String displayReversed() {
     String fullName = name.getFirstName() + " " + name.getLastName();
+
     return new StringBuilder(fullName).reverse().toString();
   }
 
